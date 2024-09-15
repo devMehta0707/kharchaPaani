@@ -1,8 +1,5 @@
 
-
-import User from "../models/User.js";
 import { hashSync, compareSync } from "bcrypt";
-import Record from "../models/Record.js";
 
 export const index = async (req, res) => {
   if(req.session.user) return res.redirect('/dashboard');

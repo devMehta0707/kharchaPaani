@@ -1,21 +1,10 @@
-import { Sequelize } from "sequelize";
-const sequelize = new Sequelize('kharcha_paani', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-  define: {
-    timestamps: true
-  }
-})
-try {
-  sequelize.authenticate().then(async()=>{
-    sequelize.sync({alter:true}).then(async()=>{
-      console.log('Connected To DataBase')
-    }).catch((error)=>{
-      console.log('sync table error: ', error);
-    })
-  })
-} catch (error) {
-  console.log('error: ', error);
-}
+import mongoose from "mongoose";
 
-export default sequelize;
+mongoose.connect(process.env.MONGO_URI)
+mongoose.connection.on("error", err => {
+  console.log("error", err)
+})
+
+mongoose.connection.on("connected", (err, res) => {
+  console.log("Mongoose Connected");
+})

@@ -1,6 +1,7 @@
+import 'dotenv/config';
 import express from 'express'
-import './dbConnection/connection.js'
 import routes from './routes/routes.js'
+import './dbConnection/connection.js'
 import { fileURLToPath } from 'url';
 import path,{dirname} from 'path';
 import flash from 'connect-flash';
